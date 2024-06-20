@@ -1,0 +1,42 @@
+Creating effective XPaths is fundamental for web test automation with Selenium. 
+Here are some examples of strategies to create XPaths, following the principles discussed in class and avoiding those horrible absolute XPaths:
+
+- Search by type and text: To find a button with the text "Send":
+
+//button[normalize-space()='Enviar']
+
+- Search by attribute: To locate an element by its class, such as a div with the class 'header':
+
+//div[@class='header']
+
+- Using contains: Useful when the attribute value contains a specific word. For example, to find an element whose ID contains 'submit':
+
+//*[@id[contains(., 'submit')]]
+
+- Searching for child elements: To find a link within a specific div:
+
+//div[@class='navigation']//a[normalize-space()='Inicio']
+
+- Search by position: To select the second element in a list:
+
+(//ul[@id='lista-items']/li)[2]
+
+- Using starts-with: If you want to find elements whose attribute starts with specific text, such as an ID starting with 'menu':
+
+//*[@id[starts-with(., 'menu')]]
+
+- Combining multiple conditions: You can search for an element that meets several conditions. For example, a button with text "Send" and class "btn-activo":
+
+//button[normalize-space()='Enviar' and @class='btn-activo']
+
+- Search by siblings (following-sibling / preceding-sibling): To select the first sibling element following an h3 with specific text:
+
+//h3[normalize-space()='Título Sección']/following-sibling::*[1]
+
+- Search by ancestors (ancestor): To find a div that is an ancestor of a specific element:
+
+//*[@id='elemento-especifico']/ancestor::div
+
+- Search by descendants (descendant): To find all 'a' elements that are descendants of a specific div:
+
+//div[@class='contenedor']/descendant::a
