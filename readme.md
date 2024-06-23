@@ -37,11 +37,16 @@ Before you start running the project, ensure that you have the following softwar
 
 To run test you can use pytest command or to specify the browser: pytest -m sandbox --browser chrome
 
-To run and get Allure report you can use: 
-pytest -m sandbox --browser chrome --alluredir alure-results
-
-Then to open report: 
-allure serve allure_results
-
 In this repo you can see an example in the folder
 
+Run the Tests:
+
+pytest -m sandbox --browser chrome --alluredir allure-results
+
+Generate the Allure Report:
+
+allure generate allure-results --clean -o allure-report
+
+Serve the Allure Report:
+
+allure serve allure-report
