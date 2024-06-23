@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+
 from .base_page import BasePage
 
 
@@ -56,6 +57,21 @@ class SandboxPage(BasePage):
         )
         self.select_element(checkbox_locator)
 
+    def is_checkbox_selected(self, label_text):
+        assert label_text in [
+            "Pizza",
+            "Hamburguesa",
+            "Pasta",
+            "Helado",
+            "Torta",
+        ], "Las opciones aceptadas son Pizza, Hamburguesa, Pasta, Helado y Torta"
+        checkbox_locator = (
+            By.XPATH,
+            f"//label[contains(., '{label_text}')]/preceding-sibling::input[@type='checkbox']",
+        )
+        checkbox_element = self.driver.find_element(*checkbox_locator)
+        return checkbox_element.is_selected()
+
     def select_radio_button(self, option):
         assert option in ["Si", "No"], "La opción tiene que ser Si o No"
 
@@ -65,6 +81,15 @@ class SandboxPage(BasePage):
         )
 
         self.select_element(radio_button_locator)
+
+    def is_radio_button_selected(self, option):
+        assert option in ["Si", "No"], "La opción tiene que ser Si o No"
+        radio_button_locator = (
+            By.XPATH,
+            f"//label[@class='form-check-label' and contains(text(),'{option}')]/preceding-sibling::input",
+        )
+        radio_button_element = self.driver.find_element(*radio_button_locator)
+        return radio_button_element.is_selected()
 
     def select_deporte(self, deporte):
         self.select_from_dropdown_by_visible_text(self.DEPORTE_DROPDOWN, deporte)
