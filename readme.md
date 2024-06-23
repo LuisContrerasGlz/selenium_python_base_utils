@@ -20,3 +20,18 @@ Before you start running the project, ensure that you have the following softwar
 
     - pip install allure-pytest
 
+4. Request Module for API Requests
+    To interact with APIs, we use the requests library. You can install it with:
+
+    - pip install requests
+
+5. Node.js
+    You can download and install it from the official site:
+
+    [Download Node.js](https://nodejs.org/).
+
+6. Allure command-line
+    In terminal run the following command: 
+    - npm install -g allure-commandline
+    - allure - options
+
